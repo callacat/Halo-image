@@ -16,10 +16,10 @@ jobs:
 
     steps:
       - name: 检查分支
-        uses: actions/checkout@master
+        uses: actions/checkout@v4
 
       - name: 安装node环境
-        uses: actions/setup-node@master
+        uses: actions/setup-node@mv4
         with:
           node-version: "16.x"
 
@@ -42,8 +42,8 @@ jobs:
 
       - name: 配置Git用户名邮箱
         run: |
-          git config --global user.name ${{ secrets.USERNAME }}
-          git config --global user.email ${{ secrets.USEREMAIL }}
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
 
       - name: 提交更新记录到GitHub仓库
         run: |
@@ -57,3 +57,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
           force: true
+          force_with_lease: true
