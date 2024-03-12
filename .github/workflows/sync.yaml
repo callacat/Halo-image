@@ -34,13 +34,15 @@ jobs:
           HALO_ENDPOINT: ${{ secrets.HALO_ENDPOINT }}
           HALO_TOKEN: ${{ secrets.HALO_TOKEN }}
           HALO_POLICY_NAME: ${{ secrets.HALO_POLICY_NAME }}
+          ELOG_GITHUB_USER: ${{ secrets.ELOG_GITHUB_USER }}
+          ELOG_GITHUB_REPO: ${{ secrets.ELOG_GITHUB_REPO }}
         run: |
           elog sync --force
 
       - name: 配置Git用户名邮箱
         run: |
-          git config --global user.name "callacat"
-          git config --global user.email "wang892947707@hotmail.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: 提交拉取的文档到GitHub仓库
         run: |
