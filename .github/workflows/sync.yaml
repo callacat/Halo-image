@@ -28,7 +28,7 @@ jobs:
           export TZ='Asia/Shanghai'
           npm install @elog/cli -g
 
-      - name: 拉取文档
+      - name: 同步文档
         env:
           FLOWUS_TABLE_PAGE_ID: ${{ secrets.FLOWUS_TABLE_PAGE_ID }}
           HALO_ENDPOINT: ${{ secrets.HALO_ENDPOINT }}
@@ -39,8 +39,3 @@ jobs:
           ELOG_GITHUB_REPO: ${{ secrets.ELOG_GITHUB_REPO }}
         run: |
           elog sync --force
-
-      - name: 配置Git用户名邮箱
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
