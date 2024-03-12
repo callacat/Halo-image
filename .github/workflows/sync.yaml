@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: 安装node环境
-        uses: actions/setup-node@mv4
+        uses: actions/setup-node@v4
         with:
           node-version: "16.x"
 
