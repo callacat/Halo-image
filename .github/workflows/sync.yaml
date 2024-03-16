@@ -39,6 +39,7 @@ jobs:
           ELOG_GITHUB_REPO: ${{ secrets.ELOG_GITHUB_REPO }}
         run: |
           elog sync
+          ls
 
       - name: 上传缓存到Release
         uses: softprops/action-gh-release@v2
@@ -47,4 +48,4 @@ jobs:
             elog.config.js
             elog.cache.json
           name: 同步缓存
-          tag_name: latest
+          tag_name: Latest
