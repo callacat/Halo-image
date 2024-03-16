@@ -48,4 +48,5 @@ jobs:
             elog.config.js
             elog.cache.json
           name: 同步缓存
-          tag_name: Latest
+          tag_name: latest
+          token: ${{ secrets.GITHUB_TOKEN }}
