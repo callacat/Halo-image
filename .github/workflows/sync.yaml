@@ -37,9 +37,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ELOG_GITHUB_USER: ${{ secrets.ELOG_GITHUB_USER }}
           ELOG_GITHUB_REPO: ${{ secrets.ELOG_GITHUB_REPO }}
+
         run: |
+          wget https://github.com/$ELOG_GITHUB_USER/$ELOG_GITHUB_REPO/releases/download/latest/elog.cache.json
           elog sync
-          ls
 
       - name: 上传缓存到Release
         uses: ncipollo/release-action@v1
@@ -49,3 +50,4 @@ jobs:
           tag: "latest"
           artifacts: "elog.cache.json,elog.config.js"
           token: ${{ secrets.GITHUB_TOKEN }}
+          replacesArtifacts: "true"
