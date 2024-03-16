@@ -47,3 +47,4 @@ jobs:
             elog.config.js
             elog.cache.json
           name: 同步缓存
+          tag_name: latest
