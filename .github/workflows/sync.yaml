@@ -40,20 +40,10 @@ jobs:
         run: |
           elog sync
 
-      - name: 配置Git用户名邮箱
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-
-      - name: 提交更新记录到GitHub仓库
-        run: |
-          echo `date +"%Y-%m-%d %H:%M:%S"` begin > time.txt
-          git add .
-          git commit -m "Refresh elog.cache.json" -a
-
-      - name: 推送更新到仓库
-        uses: ad-m/github-push-action@master
+      - name: 上传缓存到Release
+        uses: softprops/action-gh-release@v2
         with:
-          github_token: ${{ secrets.GHTOKEN }}
-          branch: main
-          force_with_lease: true
+          files: |
+            elog.config.js
+            elog.cache.json
+          name: 同步缓存
