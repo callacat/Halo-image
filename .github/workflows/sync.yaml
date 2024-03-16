@@ -39,6 +39,7 @@ jobs:
           ELOG_GITHUB_REPO: ${{ secrets.ELOG_GITHUB_REPO }}
         run: |
           elog sync
+          ls
 
       - name: 上传缓存到Release
         uses: ncipollo/release-action@v1
