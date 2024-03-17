@@ -9,6 +9,7 @@ on:
   repository_dispatch:
     types:
       - deploy
+  workflow_dispatch:
 
 jobs:
   build:
@@ -37,7 +38,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ELOG_GITHUB_USER: ${{ secrets.ELOG_GITHUB_USER }}
           ELOG_GITHUB_REPO: ${{ secrets.ELOG_GITHUB_REPO }}
-
         run: |
           wget https://github.com/$ELOG_GITHUB_USER/$ELOG_GITHUB_REPO/releases/download/latest/elog.cache.json
           elog sync
